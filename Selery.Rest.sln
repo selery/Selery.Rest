@@ -1,0 +1,82 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Selery.Model", "Selery.Model\Selery.Model.csproj", "{6B066262-6AA1-4B10-B2EF-DA791B40B414}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Selery.Model.Entity.Registration", "Selery.Model.Entity.Registration\Selery.Model.Entity.Registration.csproj", "{C32902FB-72EE-462F-915F-17D14B56CAAA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Selery.Web.Api", "Selery.Web.Api\Selery.Web.Api.csproj", "{64D2D480-512E-4A88-B9F7-EDDCE0C7CD16}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Selery.Library.Common", "Selery.Library.Common\Selery.Library.Common.csproj", "{CA78B265-ADA9-4AD9-8DFA-9CBB73296841}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Selery.BO.Core", "Selery.BO.Core\Selery.BO.Core.csproj", "{80819D9E-624B-49AD-9992-21809100231B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Selery.BO.Entity", "Selery.BO.Entity\Selery.BO.Entity.csproj", "{E5690F21-7C37-4812-A1B6-EF4EB66A7D9C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Selery.Model.Entity.Workout", "Selery.Model.Entity.Workout\Selery.Model.Entity.Workout.csproj", "{62006634-09A7-4FB5-9013-0517773BE694}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Selery.Model.Entity.Nutrition", "Selery.Model.Entity.Nutrition\Selery.Model.Entity.Nutrition.csproj", "{A2589188-DA2C-4693-A415-6F1D7712A12E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Selery.Model.Entity.B2B", "Selery.Model.Entity.B2B\Selery.Model.Entity.B2B.csproj", "{2F3A4978-6B42-4A51-BA31-E5F3C70FBEE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Selery.UnitTest", "Selery.UnitTest\Selery.UnitTest.csproj", "{7FB7D595-2E90-4130-B816-78CFB2BCE093}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Selery.BO.Nutrition", "Selery.BO.Nutrition\Selery.BO.Nutrition.csproj", "{4042CEDF-C472-4C5C-AC0F-C7C6B429C75A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6B066262-6AA1-4B10-B2EF-DA791B40B414}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B066262-6AA1-4B10-B2EF-DA791B40B414}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B066262-6AA1-4B10-B2EF-DA791B40B414}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B066262-6AA1-4B10-B2EF-DA791B40B414}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C32902FB-72EE-462F-915F-17D14B56CAAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C32902FB-72EE-462F-915F-17D14B56CAAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C32902FB-72EE-462F-915F-17D14B56CAAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C32902FB-72EE-462F-915F-17D14B56CAAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64D2D480-512E-4A88-B9F7-EDDCE0C7CD16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64D2D480-512E-4A88-B9F7-EDDCE0C7CD16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64D2D480-512E-4A88-B9F7-EDDCE0C7CD16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64D2D480-512E-4A88-B9F7-EDDCE0C7CD16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA78B265-ADA9-4AD9-8DFA-9CBB73296841}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA78B265-ADA9-4AD9-8DFA-9CBB73296841}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA78B265-ADA9-4AD9-8DFA-9CBB73296841}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA78B265-ADA9-4AD9-8DFA-9CBB73296841}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80819D9E-624B-49AD-9992-21809100231B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80819D9E-624B-49AD-9992-21809100231B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80819D9E-624B-49AD-9992-21809100231B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80819D9E-624B-49AD-9992-21809100231B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5690F21-7C37-4812-A1B6-EF4EB66A7D9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5690F21-7C37-4812-A1B6-EF4EB66A7D9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5690F21-7C37-4812-A1B6-EF4EB66A7D9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5690F21-7C37-4812-A1B6-EF4EB66A7D9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62006634-09A7-4FB5-9013-0517773BE694}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62006634-09A7-4FB5-9013-0517773BE694}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62006634-09A7-4FB5-9013-0517773BE694}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62006634-09A7-4FB5-9013-0517773BE694}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2589188-DA2C-4693-A415-6F1D7712A12E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2589188-DA2C-4693-A415-6F1D7712A12E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2589188-DA2C-4693-A415-6F1D7712A12E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2589188-DA2C-4693-A415-6F1D7712A12E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F3A4978-6B42-4A51-BA31-E5F3C70FBEE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F3A4978-6B42-4A51-BA31-E5F3C70FBEE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F3A4978-6B42-4A51-BA31-E5F3C70FBEE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F3A4978-6B42-4A51-BA31-E5F3C70FBEE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FB7D595-2E90-4130-B816-78CFB2BCE093}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FB7D595-2E90-4130-B816-78CFB2BCE093}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FB7D595-2E90-4130-B816-78CFB2BCE093}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FB7D595-2E90-4130-B816-78CFB2BCE093}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4042CEDF-C472-4C5C-AC0F-C7C6B429C75A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4042CEDF-C472-4C5C-AC0F-C7C6B429C75A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4042CEDF-C472-4C5C-AC0F-C7C6B429C75A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4042CEDF-C472-4C5C-AC0F-C7C6B429C75A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

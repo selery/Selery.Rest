@@ -1,0 +1,475 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="RegistrationModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="spFindUserByEmail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="reg">
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spFindUserByFacebookID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="reg">
+          <Parameter Name="FacebookID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="spInsertUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="reg">
+          <Parameter Name="FirstName" Type="varchar" Mode="In" />
+          <Parameter Name="LastName" Type="varchar" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="FacebookID" Type="bigint" Mode="In" />
+          <Parameter Name="Password" Type="binary" Mode="In" />
+        </Function>
+        <Function Name="spIsProfileComplete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="reg">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spLoginByEmail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="reg">
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="binary" Mode="In" />
+        </Function>
+        <Function Name="spSelectActivity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="reg" />
+        <Function Name="spSelectActivityByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="reg">
+          <Parameter Name="ActivityID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spSelectGoal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="reg" />
+        <Function Name="spSelectGoalByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="reg">
+          <Parameter Name="GoalID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spSelectUserByEmail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="reg">
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spSelectUserByFacebookID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="reg">
+          <Parameter Name="FacebookID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="spSelectUserByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="reg">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spUserActivityInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="reg">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+          <Parameter Name="ActivityID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spUserProfileUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="reg">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+          <Parameter Name="Weight" Type="decimal" Mode="In" />
+          <Parameter Name="ActivityID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spUserRegistrationUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="reg">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+          <Parameter Name="Gender" Type="int" Mode="In" />
+          <Parameter Name="HeighInt" Type="int" Mode="In" />
+          <Parameter Name="HeighDecint" Type="int" Mode="In" />
+          <Parameter Name="BirthDate" Type="datetime" Mode="In" />
+          <Parameter Name="GoalID" Type="int" Mode="In" />
+          <Parameter Name="BMI" Type="decimal" Mode="In" />
+          <Parameter Name="Calories" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="spUserWeightInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="reg">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+          <Parameter Name="Weight" Type="decimal" Mode="In" />
+        </Function>
+        <EntityContainer Name="RegistrationModelStoreContainer" />
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RegistrationModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="RegistrationEntities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="spInsertUser" ReturnType="Collection(RegistrationModel.spInsertUser_Result)">
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="FacebookID" Mode="In" Type="Int64" />
+            <Parameter Name="Password" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="spSelectUserByEmail" ReturnType="Collection(RegistrationModel.spSelectUserByEmail_Result)">
+          <Parameter Name="Email" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spSelectUserByID" ReturnType="Collection(RegistrationModel.spSelectUserByID_Result)">
+          <Parameter Name="UserID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spFindUserByEmail" ReturnType="Collection(RegistrationModel.spFindUserByEmail_Result)">
+          <Parameter Name="Email" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spLoginByEmail" ReturnType="Collection(Int32)">
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="spFindUserByFacebookID" ReturnType="Collection(RegistrationModel.spFindUserByFacebookID_Result)">
+          <Parameter Name="FacebookID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="spSelectUserByFacebookID" ReturnType="Collection(RegistrationModel.spSelectUserByFacebookID_Result)">
+          <Parameter Name="FacebookID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="spSelectActivity" ReturnType="Collection(RegistrationModel.spSelectActivity_Result)" />
+          <FunctionImport Name="spSelectGoal" ReturnType="Collection(RegistrationModel.spSelectGoal_Result)" />
+          <FunctionImport Name="spUserWeightInsert" ReturnType="Collection(RegistrationModel.spUserWeightInsert_Result)">
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="Weight" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="spIsProfileComplete" ReturnType="Collection(RegistrationModel.spIsProfileComplete_Result)">
+          <Parameter Name="UserID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spSelectActivityByID" ReturnType="Collection(RegistrationModel.spSelectActivityByID_Result)">
+          <Parameter Name="ActivityID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spSelectGoalByID" ReturnType="Collection(RegistrationModel.spSelectGoalByID_Result)">
+          <Parameter Name="GoalID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spUserActivityInsert" ReturnType="Collection(Decimal)">
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="ActivityID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spUserRegistrationUpdate" ReturnType="Collection(Int32)">
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="Gender" Mode="In" Type="Int32" />
+            <Parameter Name="HeighInt" Mode="In" Type="Int32" />
+            <Parameter Name="HeighDecint" Mode="In" Type="Int32" />
+            <Parameter Name="BirthDate" Mode="In" Type="DateTime" />
+            <Parameter Name="GoalID" Mode="In" Type="Int32" />
+            <Parameter Name="BMI" Mode="In" Type="Decimal" />
+            <Parameter Name="Calories" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="spUserProfileUpdate" ReturnType="Collection(Decimal)">
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="Weight" Mode="In" Type="Decimal" />
+            <Parameter Name="ActivityID" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="spFindUserByEmail_Result">
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="spInsertUser_Result">
+          <Property Type="Decimal" Name="UserID" Nullable="true" Precision="38" Scale="0" />
+        </ComplexType>
+        <ComplexType Name="spFindUserByFacebookID_Result">
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="spSelectActivity_Result">
+          <Property Type="Int32" Name="ActivityID" Nullable="false" />
+          <Property Type="String" Name="ActivityName" Nullable="false" MaxLength="100" />
+          <Property Type="Decimal" Name="Factor" Nullable="false" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="spSelectGoal_Result">
+          <Property Type="Int32" Name="GoalID" Nullable="false" />
+          <Property Type="String" Name="GoalName" Nullable="false" MaxLength="100" />
+          <Property Type="Boolean" Name="IsEnabled" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="spUserWeightInsert_Result">
+          <Property Type="Decimal" Name="UserWeightID" Nullable="true" Precision="38" Scale="0" />
+        </ComplexType>
+        <ComplexType Name="spIsProfileComplete_Result">
+          <Property Type="Boolean" Name="IsProfileComplete" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spSelectUserByEmail_Result">
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="Int64" Name="FacebookID" Nullable="true" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="80" />
+          <Property Type="Binary" Name="Password" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="ResetPasswordToken" Nullable="true" MaxLength="255" />
+          <Property Type="DateTime" Name="ResetPasswordRequestDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="Gender" Nullable="true" />
+          <Property Type="DateTime" Name="BirthDate" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="Heigh" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="HeighInt" Nullable="true" />
+          <Property Type="Int32" Name="HeighDec" Nullable="true" />
+          <Property Type="Int32" Name="ActivityID" Nullable="true" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="Max" />
+          <Property Type="DateTime" Name="ActivationDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="TerminationDate" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="IsApproved" Nullable="true" />
+          <Property Type="Boolean" Name="IsLockedOut" Nullable="true" />
+          <Property Type="DateTime" Name="LastLoginDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="true" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="LastUpdatedDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="LastUpdatedBy" Nullable="true" />
+          <Property Type="Decimal" Name="Weight" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="GoalID" Nullable="true" />
+          <Property Type="Decimal" Name="BMI" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Calories" Nullable="true" Precision="18" Scale="2" />
+          </ComplexType>
+        <ComplexType Name="spSelectUserByFacebookID_Result">
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="Int64" Name="FacebookID" Nullable="true" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="80" />
+          <Property Type="Binary" Name="Password" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="ResetPasswordToken" Nullable="true" MaxLength="255" />
+          <Property Type="DateTime" Name="ResetPasswordRequestDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="Gender" Nullable="true" />
+          <Property Type="DateTime" Name="BirthDate" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="Heigh" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="HeighInt" Nullable="true" />
+          <Property Type="Int32" Name="HeighDec" Nullable="true" />
+          <Property Type="Int32" Name="ActivityID" Nullable="true" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="Max" />
+          <Property Type="DateTime" Name="ActivationDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="TerminationDate" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="IsApproved" Nullable="true" />
+          <Property Type="Boolean" Name="IsLockedOut" Nullable="true" />
+          <Property Type="DateTime" Name="LastLoginDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="true" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="LastUpdatedDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="LastUpdatedBy" Nullable="true" />
+          <Property Type="Decimal" Name="Weight" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="GoalID" Nullable="true" />
+          <Property Type="Decimal" Name="BMI" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Calories" Nullable="true" Precision="18" Scale="2" />
+          </ComplexType>
+        <ComplexType Name="spSelectUserByID_Result">
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="Int64" Name="FacebookID" Nullable="true" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="80" />
+          <Property Type="Binary" Name="Password" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="ResetPasswordToken" Nullable="true" MaxLength="255" />
+          <Property Type="DateTime" Name="ResetPasswordRequestDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="Gender" Nullable="true" />
+          <Property Type="DateTime" Name="BirthDate" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="Heigh" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="HeighInt" Nullable="true" />
+          <Property Type="Int32" Name="HeighDec" Nullable="true" />
+          <Property Type="Int32" Name="ActivityID" Nullable="true" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="Max" />
+          <Property Type="DateTime" Name="ActivationDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="TerminationDate" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="IsApproved" Nullable="true" />
+          <Property Type="Boolean" Name="IsLockedOut" Nullable="true" />
+          <Property Type="DateTime" Name="LastLoginDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="true" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="LastUpdatedDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="LastUpdatedBy" Nullable="true" />
+          <Property Type="Decimal" Name="Weight" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="GoalID" Nullable="true" />
+          <Property Type="Decimal" Name="BMI" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Calories" Nullable="true" Precision="18" Scale="2" />
+          </ComplexType>
+        <ComplexType Name="spSelectActivityByID_Result">
+          <Property Type="Int32" Name="ActivityID" Nullable="false" />
+          <Property Type="String" Name="ActivityName" Nullable="false" MaxLength="100" />
+          <Property Type="Decimal" Name="Factor" Nullable="false" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="spSelectGoalByID_Result">
+          <Property Type="Int32" Name="GoalID" Nullable="false" />
+          <Property Type="String" Name="GoalName" Nullable="false" MaxLength="100" />
+          <Property Type="Boolean" Name="IsEnabled" Nullable="false" />
+          <Property Type="Int32" Name="GoalTypeID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RegistrationModelStoreContainer" CdmEntityContainer="RegistrationEntities" >
+          <FunctionImportMapping FunctionImportName="spInsertUser" FunctionName="RegistrationModel.Store.spInsertUser" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RegistrationModel.spInsertUser_Result">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spSelectUserByEmail" FunctionName="RegistrationModel.Store.spSelectUserByEmail">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RegistrationModel.spSelectUserByEmail_Result">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="FacebookID" ColumnName="FacebookID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="ResetPasswordToken" ColumnName="ResetPasswordToken" />
+                <ScalarProperty Name="ResetPasswordRequestDate" ColumnName="ResetPasswordRequestDate" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Heigh" ColumnName="Heigh" />
+                <ScalarProperty Name="HeighInt" ColumnName="HeighInt" />
+                <ScalarProperty Name="HeighDec" ColumnName="HeighDec" />
+                <ScalarProperty Name="ActivityID" ColumnName="ActivityID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ActivationDate" ColumnName="ActivationDate" />
+                <ScalarProperty Name="TerminationDate" ColumnName="TerminationDate" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+                <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
+                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="GoalID" ColumnName="GoalID" />
+                <ScalarProperty Name="BMI" ColumnName="BMI" />
+                <ScalarProperty Name="Calories" ColumnName="Calories" />
+                </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spSelectUserByID" FunctionName="RegistrationModel.Store.spSelectUserByID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RegistrationModel.spSelectUserByID_Result">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="FacebookID" ColumnName="FacebookID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="ResetPasswordToken" ColumnName="ResetPasswordToken" />
+                <ScalarProperty Name="ResetPasswordRequestDate" ColumnName="ResetPasswordRequestDate" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Heigh" ColumnName="Heigh" />
+                <ScalarProperty Name="HeighInt" ColumnName="HeighInt" />
+                <ScalarProperty Name="HeighDec" ColumnName="HeighDec" />
+                <ScalarProperty Name="ActivityID" ColumnName="ActivityID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ActivationDate" ColumnName="ActivationDate" />
+                <ScalarProperty Name="TerminationDate" ColumnName="TerminationDate" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+                <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
+                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="GoalID" ColumnName="GoalID" />
+                <ScalarProperty Name="BMI" ColumnName="BMI" />
+                <ScalarProperty Name="Calories" ColumnName="Calories" />
+                </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spFindUserByEmail" FunctionName="RegistrationModel.Store.spFindUserByEmail" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RegistrationModel.spFindUserByEmail_Result">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spLoginByEmail" FunctionName="RegistrationModel.Store.spLoginByEmail" />
+          <FunctionImportMapping FunctionImportName="spFindUserByFacebookID" FunctionName="RegistrationModel.Store.spFindUserByFacebookID" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RegistrationModel.spFindUserByFacebookID_Result">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spSelectUserByFacebookID" FunctionName="RegistrationModel.Store.spSelectUserByFacebookID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RegistrationModel.spSelectUserByFacebookID_Result">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="FacebookID" ColumnName="FacebookID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="ResetPasswordToken" ColumnName="ResetPasswordToken" />
+                <ScalarProperty Name="ResetPasswordRequestDate" ColumnName="ResetPasswordRequestDate" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Heigh" ColumnName="Heigh" />
+                <ScalarProperty Name="HeighInt" ColumnName="HeighInt" />
+                <ScalarProperty Name="HeighDec" ColumnName="HeighDec" />
+                <ScalarProperty Name="ActivityID" ColumnName="ActivityID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ActivationDate" ColumnName="ActivationDate" />
+                <ScalarProperty Name="TerminationDate" ColumnName="TerminationDate" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+                <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
+                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="GoalID" ColumnName="GoalID" />
+                <ScalarProperty Name="BMI" ColumnName="BMI" />
+                <ScalarProperty Name="Calories" ColumnName="Calories" />
+                </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spSelectActivity" FunctionName="RegistrationModel.Store.spSelectActivity">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RegistrationModel.spSelectActivity_Result">
+                <ScalarProperty Name="ActivityID" ColumnName="ActivityID" />
+                <ScalarProperty Name="ActivityName" ColumnName="ActivityName" />
+                <ScalarProperty Name="Factor" ColumnName="Factor" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spSelectGoal" FunctionName="RegistrationModel.Store.spSelectGoal">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RegistrationModel.spSelectGoal_Result">
+                <ScalarProperty Name="GoalID" ColumnName="GoalID" />
+                <ScalarProperty Name="GoalName" ColumnName="GoalName" />
+                <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spUserWeightInsert" FunctionName="RegistrationModel.Store.spUserWeightInsert" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RegistrationModel.spUserWeightInsert_Result">
+                <ScalarProperty Name="UserWeightID" ColumnName="UserWeightID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spIsProfileComplete" FunctionName="RegistrationModel.Store.spIsProfileComplete" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RegistrationModel.spIsProfileComplete_Result">
+                <ScalarProperty Name="IsProfileComplete" ColumnName="IsProfileComplete" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spSelectActivityByID" FunctionName="RegistrationModel.Store.spSelectActivityByID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RegistrationModel.spSelectActivityByID_Result">
+                <ScalarProperty Name="ActivityID" ColumnName="ActivityID" />
+                <ScalarProperty Name="ActivityName" ColumnName="ActivityName" />
+                <ScalarProperty Name="Factor" ColumnName="Factor" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spSelectGoalByID" FunctionName="RegistrationModel.Store.spSelectGoalByID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RegistrationModel.spSelectGoalByID_Result">
+                <ScalarProperty Name="GoalID" ColumnName="GoalID" />
+                <ScalarProperty Name="GoalName" ColumnName="GoalName" />
+                <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+                <ScalarProperty Name="GoalTypeID" ColumnName="GoalTypeID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spUserActivityInsert" FunctionName="RegistrationModel.Store.spUserActivityInsert" >
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spUserRegistrationUpdate" FunctionName="RegistrationModel.Store.spUserRegistrationUpdate" />
+          <FunctionImportMapping FunctionImportName="spUserProfileUpdate" FunctionName="RegistrationModel.Store.spUserProfileUpdate" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

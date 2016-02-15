@@ -1,0 +1,350 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="WorkoutModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="spSelectActivePrograms" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="wkt" />
+        <Function Name="spSelectCurrentUserProgram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="wkt">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spSelectProgramByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="wkt">
+          <Parameter Name="ProgramID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spSelectUserProgramByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="wkt">
+          <Parameter Name="UserProgramID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spUserAvailableProgramsSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="wkt">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spUserProgramCurrentReset" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="wkt">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spUserProgramDayExericeInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="wkt">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+          <Parameter Name="ProgramID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spUserProgramInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="wkt">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+          <Parameter Name="ProgramID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spUserProgramUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="wkt">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+          <Parameter Name="ProgramID" Type="int" Mode="In" />
+          <Parameter Name="BMIStart" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="spUserProgramUpdateCurrentDay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="wkt">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+          <Parameter Name="ProgramID" Type="int" Mode="In" />
+          <Parameter Name="CurrentDay" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spUsersInPorgram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="wkt">
+          <Parameter Name="ProgramID" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="WorkoutModelStoreContainer" />
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WorkoutModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="WorkoutEntities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="spSelectCurrentUserProgram" ReturnType="Collection(WorkoutModel.spSelectCurrentUserProgram_Result)">
+          <Parameter Name="UserID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spSelectActivePrograms" ReturnType="Collection(WorkoutModel.spSelectActivePrograms_Result)" />
+          <FunctionImport Name="spSelectProgramByID" ReturnType="Collection(WorkoutModel.spSelectProgramByID_Result)">
+          <Parameter Name="ProgramID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spUsersInPorgram" ReturnType="Collection(WorkoutModel.spUsersInPorgram_Result)">
+          <Parameter Name="ProgramID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spUserProgramCurrentReset">
+          <Parameter Name="UserID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spUserProgramDayExericeInsert">
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="ProgramID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spUserProgramInsert" ReturnType="Collection(WorkoutModel.spUserProgramInsert_Result)">
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="ProgramID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spSelectUserProgramByID" ReturnType="Collection(WorkoutModel.spSelectUserProgramByID_Result)">
+          <Parameter Name="UserProgramID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spUserProgramUpdate" ReturnType="Collection(Int32)">
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="ProgramID" Mode="In" Type="Int32" />
+            <Parameter Name="BMIStart" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="spUserProgramUpdateCurrentDay" ReturnType="Collection(Int32)">
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="ProgramID" Mode="In" Type="Int32" />
+            <Parameter Name="CurrentDay" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spUserAvailableProgramsSelect" ReturnType="Collection(WorkoutModel.spUserAvailableProgramsSelect_Result)">
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="spSelectActivePrograms_Result">
+          <Property Type="Int32" Name="ProgramID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="LongDescription" Nullable="true" />
+          <Property Type="Int32" Name="ProgramStatusID" Nullable="false" />
+          <Property Type="String" Name="ProgramStatusName" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="GoalID" Nullable="false" />
+          <Property Type="String" Name="GoalName" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="Raiting" Nullable="true" />
+          <Property Type="String" Name="ImageFile" Nullable="true" MaxLength="80" />
+          <Property Type="Int32" Name="Duration" Nullable="true" />
+          <Property Type="Int32" Name="UnitOfMeasureID" Nullable="true" />
+          <Property Type="String" Name="UnitOfMeasureCode" Nullable="true" MaxLength="4" />
+          <Property Type="String" Name="UnitOfMeasureDescription" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="spSelectProgramByID_Result">
+          <Property Type="Int32" Name="ProgramID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="LongDescription" Nullable="true" />
+          <Property Type="Int32" Name="ProgramStatusID" Nullable="false" />
+          <Property Type="String" Name="ProgramStatusName" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="GoalID" Nullable="false" />
+          <Property Type="String" Name="GoalName" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="Raiting" Nullable="true" />
+          <Property Type="String" Name="ImageFile" Nullable="true" MaxLength="80" />
+          <Property Type="Int32" Name="Duration" Nullable="true" />
+          <Property Type="Int32" Name="UnitOfMeasureID" Nullable="true" />
+          <Property Type="String" Name="UnitOfMeasureCode" Nullable="true" MaxLength="4" />
+          <Property Type="String" Name="UnitOfMeasureDescription" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="spUsersInPorgram_Result">
+          <Property Type="Int32" Name="UsersInProgram" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spUserProgramInsert_Result">
+          <Property Type="Decimal" Name="UserProgramXRefID" Nullable="true" Precision="38" Scale="0" />
+        </ComplexType>
+        <ComplexType Name="spSelectCurrentUserProgram_Result">
+          <Property Type="Int32" Name="ProgramID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="LongDescription" Nullable="true" />
+          <Property Type="Int32" Name="ProgramStatusID" Nullable="false" />
+          <Property Type="String" Name="ProgramStatusName" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="GoalID" Nullable="false" />
+          <Property Type="String" Name="GoalName" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="Raiting" Nullable="true" />
+          <Property Type="String" Name="ImageFile" Nullable="true" MaxLength="80" />
+          <Property Type="Int32" Name="Duration" Nullable="true" />
+          <Property Type="Int32" Name="UnitOfMeasureID" Nullable="true" />
+          <Property Type="String" Name="UnitOfMeasureCode" Nullable="true" MaxLength="4" />
+          <Property Type="String" Name="UnitOfMeasureDescription" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="IsCompleted" Nullable="false" />
+          <Property Type="DateTime" Name="StartDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="EndDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+          <Property Type="Boolean" Name="OnProgress" Nullable="true" />
+          <Property Type="Int32" Name="CurrentDay" Nullable="true" />
+          <Property Type="Decimal" Name="BMIStart" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="spSelectUserProgramByID_Result">
+          <Property Type="Int32" Name="ProgramID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="LongDescription" Nullable="true" />
+          <Property Type="Int32" Name="ProgramStatusID" Nullable="false" />
+          <Property Type="String" Name="ProgramStatusName" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="GoalID" Nullable="false" />
+          <Property Type="String" Name="GoalName" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="Raiting" Nullable="true" />
+          <Property Type="String" Name="ImageFile" Nullable="true" MaxLength="80" />
+          <Property Type="Int32" Name="Duration" Nullable="true" />
+          <Property Type="Int32" Name="UnitOfMeasureID" Nullable="true" />
+          <Property Type="String" Name="UnitOfMeasureCode" Nullable="true" MaxLength="4" />
+          <Property Type="String" Name="UnitOfMeasureDescription" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="IsCompleted" Nullable="false" />
+          <Property Type="DateTime" Name="StartDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="EndDate" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="OnProgress" Nullable="true" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+          <Property Type="Decimal" Name="BMIStart" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="CurrentDay" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spUserAvailableProgramsSelect_Result">
+          <Property Type="Int32" Name="ProgramID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="LongDescription" Nullable="true" />
+          <Property Type="Int32" Name="ProgramStatusID" Nullable="false" />
+          <Property Type="String" Name="ProgramStatusName" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="GoalID" Nullable="false" />
+          <Property Type="String" Name="GoalName" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="Raiting" Nullable="true" />
+          <Property Type="String" Name="ImageFile" Nullable="true" MaxLength="80" />
+          <Property Type="Int32" Name="Duration" Nullable="true" />
+          <Property Type="Int32" Name="UnitOfMeasureID" Nullable="true" />
+          <Property Type="String" Name="UnitOfMeasureCode" Nullable="true" MaxLength="4" />
+          <Property Type="String" Name="UnitOfMeasureDescription" Nullable="true" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WorkoutModelStoreContainer" CdmEntityContainer="WorkoutEntities" >
+          <FunctionImportMapping FunctionImportName="spSelectCurrentUserProgram" FunctionName="WorkoutModel.Store.spSelectCurrentUserProgram">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WorkoutModel.spSelectCurrentUserProgram_Result">
+                <ScalarProperty Name="ProgramID" ColumnName="ProgramID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="LongDescription" ColumnName="LongDescription" />
+                <ScalarProperty Name="ProgramStatusID" ColumnName="ProgramStatusID" />
+                <ScalarProperty Name="ProgramStatusName" ColumnName="ProgramStatusName" />
+                <ScalarProperty Name="GoalID" ColumnName="GoalID" />
+                <ScalarProperty Name="GoalName" ColumnName="GoalName" />
+                <ScalarProperty Name="Raiting" ColumnName="Raiting" />
+                <ScalarProperty Name="ImageFile" ColumnName="ImageFile" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="UnitOfMeasureID" ColumnName="UnitOfMeasureID" />
+                <ScalarProperty Name="UnitOfMeasureCode" ColumnName="UnitOfMeasureCode" />
+                <ScalarProperty Name="UnitOfMeasureDescription" ColumnName="UnitOfMeasureDescription" />
+                <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="OnProgress" ColumnName="OnProgress" />
+                <ScalarProperty Name="CurrentDay" ColumnName="CurrentDay" />
+                <ScalarProperty Name="BMIStart" ColumnName="BMIStart" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spSelectActivePrograms" FunctionName="WorkoutModel.Store.spSelectActivePrograms">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WorkoutModel.spSelectActivePrograms_Result">
+                <ScalarProperty Name="ProgramID" ColumnName="ProgramID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="LongDescription" ColumnName="LongDescription" />
+                <ScalarProperty Name="ProgramStatusID" ColumnName="ProgramStatusID" />
+                <ScalarProperty Name="ProgramStatusName" ColumnName="ProgramStatusName" />
+                <ScalarProperty Name="GoalID" ColumnName="GoalID" />
+                <ScalarProperty Name="GoalName" ColumnName="GoalName" />
+                <ScalarProperty Name="Raiting" ColumnName="Raiting" />
+                <ScalarProperty Name="ImageFile" ColumnName="ImageFile" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="UnitOfMeasureID" ColumnName="UnitOfMeasureID" />
+                <ScalarProperty Name="UnitOfMeasureCode" ColumnName="UnitOfMeasureCode" />
+                <ScalarProperty Name="UnitOfMeasureDescription" ColumnName="UnitOfMeasureDescription" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spSelectProgramByID" FunctionName="WorkoutModel.Store.spSelectProgramByID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WorkoutModel.spSelectProgramByID_Result">
+                <ScalarProperty Name="ProgramID" ColumnName="ProgramID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="LongDescription" ColumnName="LongDescription" />
+                <ScalarProperty Name="ProgramStatusID" ColumnName="ProgramStatusID" />
+                <ScalarProperty Name="ProgramStatusName" ColumnName="ProgramStatusName" />
+                <ScalarProperty Name="GoalID" ColumnName="GoalID" />
+                <ScalarProperty Name="GoalName" ColumnName="GoalName" />
+                <ScalarProperty Name="Raiting" ColumnName="Raiting" />
+                <ScalarProperty Name="ImageFile" ColumnName="ImageFile" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="UnitOfMeasureID" ColumnName="UnitOfMeasureID" />
+                <ScalarProperty Name="UnitOfMeasureCode" ColumnName="UnitOfMeasureCode" />
+                <ScalarProperty Name="UnitOfMeasureDescription" ColumnName="UnitOfMeasureDescription" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spUsersInPorgram" FunctionName="WorkoutModel.Store.spUsersInPorgram" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WorkoutModel.spUsersInPorgram_Result">
+                <ScalarProperty Name="UsersInProgram" ColumnName="UsersInProgram" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spUserProgramCurrentReset" FunctionName="WorkoutModel.Store.spUserProgramCurrentReset" />
+          <FunctionImportMapping FunctionImportName="spUserProgramDayExericeInsert" FunctionName="WorkoutModel.Store.spUserProgramDayExericeInsert" />
+          <FunctionImportMapping FunctionImportName="spUserProgramInsert" FunctionName="WorkoutModel.Store.spUserProgramInsert" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WorkoutModel.spUserProgramInsert_Result">
+                <ScalarProperty Name="UserProgramXRefID" ColumnName="UserProgramXRefID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spSelectUserProgramByID" FunctionName="WorkoutModel.Store.spSelectUserProgramByID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WorkoutModel.spSelectUserProgramByID_Result">
+                <ScalarProperty Name="ProgramID" ColumnName="ProgramID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="LongDescription" ColumnName="LongDescription" />
+                <ScalarProperty Name="ProgramStatusID" ColumnName="ProgramStatusID" />
+                <ScalarProperty Name="ProgramStatusName" ColumnName="ProgramStatusName" />
+                <ScalarProperty Name="GoalID" ColumnName="GoalID" />
+                <ScalarProperty Name="GoalName" ColumnName="GoalName" />
+                <ScalarProperty Name="Raiting" ColumnName="Raiting" />
+                <ScalarProperty Name="ImageFile" ColumnName="ImageFile" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="UnitOfMeasureID" ColumnName="UnitOfMeasureID" />
+                <ScalarProperty Name="UnitOfMeasureCode" ColumnName="UnitOfMeasureCode" />
+                <ScalarProperty Name="UnitOfMeasureDescription" ColumnName="UnitOfMeasureDescription" />
+                <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="OnProgress" ColumnName="OnProgress" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="BMIStart" ColumnName="BMIStart" />
+                <ScalarProperty Name="CurrentDay" ColumnName="CurrentDay" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spUserProgramUpdate" FunctionName="WorkoutModel.Store.spUserProgramUpdate" />
+          <FunctionImportMapping FunctionImportName="spUserProgramUpdateCurrentDay" FunctionName="WorkoutModel.Store.spUserProgramUpdateCurrentDay" />
+          <FunctionImportMapping FunctionImportName="spUserAvailableProgramsSelect" FunctionName="WorkoutModel.Store.spUserAvailableProgramsSelect">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WorkoutModel.spUserAvailableProgramsSelect_Result">
+                <ScalarProperty Name="ProgramID" ColumnName="ProgramID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="LongDescription" ColumnName="LongDescription" />
+                <ScalarProperty Name="ProgramStatusID" ColumnName="ProgramStatusID" />
+                <ScalarProperty Name="ProgramStatusName" ColumnName="ProgramStatusName" />
+                <ScalarProperty Name="GoalID" ColumnName="GoalID" />
+                <ScalarProperty Name="GoalName" ColumnName="GoalName" />
+                <ScalarProperty Name="Raiting" ColumnName="Raiting" />
+                <ScalarProperty Name="ImageFile" ColumnName="ImageFile" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="UnitOfMeasureID" ColumnName="UnitOfMeasureID" />
+                <ScalarProperty Name="UnitOfMeasureCode" ColumnName="UnitOfMeasureCode" />
+                <ScalarProperty Name="UnitOfMeasureDescription" ColumnName="UnitOfMeasureDescription" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

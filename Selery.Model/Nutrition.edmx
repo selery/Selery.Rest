@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="NutritionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="spSelectFoodByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ntr">
+          <Parameter Name="FoodID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spSelectFoodBySponsorAndMealTimeType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ntr">
+          <Parameter Name="SponsorID" Type="int" Mode="In" />
+          <Parameter Name="MealTimeTypeID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spUserDailyMenuInitialize" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ntr">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+          <Parameter Name="ProgramID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spUserDailyMenuSelectByDay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ntr">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+          <Parameter Name="Day" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spUserMenuCalories" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ntr">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+          <Parameter Name="ProgramID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spUserProgramDayMealTimeFoodXRefUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ntr">
+          <Parameter Name="MenuMealTimeFoodXRefID" Type="int" Mode="In" />
+          <Parameter Name="FoodID" Type="int" Mode="In" />
+          <Parameter Name="Carbohydrate" Type="decimal" Mode="In" />
+          <Parameter Name="Protein" Type="decimal" Mode="In" />
+          <Parameter Name="Fat" Type="decimal" Mode="In" />
+          <Parameter Name="Calories" Type="decimal" Mode="In" />
+          <Parameter Name="Qty" Type="decimal" Mode="In" />
+        </Function>
+        <EntityContainer Name="NutritionModelStoreContainer" />
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NutritionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="NutritionEntities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="spSelectFoodByID" ReturnType="Collection(NutritionModel.spSelectFoodByID_Result)">
+          <Parameter Name="FoodID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spUserDailyMenuInitialize" ReturnType="Collection(Int32)">
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="ProgramID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spUserDailyMenuSelectByDay" ReturnType="Collection(NutritionModel.spUserDailyMenuSelectByDay_Result)">
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="Day" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spUserMenuCalories" ReturnType="Collection(NutritionModel.spUserMenuCalories_Result)">
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="ProgramID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spSelectFoodBySponsorAndMealTimeType" ReturnType="Collection(NutritionModel.spSelectFoodBySponsorAndMealTimeType_Result)">
+            <Parameter Name="SponsorID" Mode="In" Type="Int32" />
+            <Parameter Name="MealTimeTypeID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spUserProgramDayMealTimeFoodXRefUpdate" ReturnType="Collection(NutritionModel.spUserProgramDayMealTimeFoodXRefUpdate_Result)">
+            <Parameter Name="MenuMealTimeFoodXRefID" Mode="In" Type="Int32" />
+            <Parameter Name="FoodID" Mode="In" Type="Int32" />
+            <Parameter Name="Carbohydrate" Mode="In" Type="Decimal" />
+            <Parameter Name="Protein" Mode="In" Type="Decimal" />
+            <Parameter Name="Fat" Mode="In" Type="Decimal" />
+            <Parameter Name="Calories" Mode="In" Type="Decimal" />
+            <Parameter Name="Qty" Mode="In" Type="Decimal" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="spSelectFoodByID_Result">
+          <Property Type="Int32" Name="FoodID" Nullable="false" />
+          <Property Type="Int32" Name="MealTimeTypeID" Nullable="false" />
+          <Property Type="Int32" Name="UserID" Nullable="true" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="ShortName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="SearchableName" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="SearchableNameLength" Nullable="true" />
+          <Property Type="Decimal" Name="Carbohydrate" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Protein" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Fat" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Calories" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Qty" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="UnitID" Nullable="true" />
+          <Property Type="Int32" Name="SponsorID" Nullable="true" />
+          <Property Type="String" Name="TAG" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="SourceID" Nullable="true" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="spUserDailyMenuSelectByDay_Result">
+          <Property Type="Int32" Name="MealTimeTypeID" Nullable="false" />
+          <Property Type="String" Name="MealTimeName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="FoodName" Nullable="true" MaxLength="255" />
+          <Property Type="Decimal" Name="Qty" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Calories" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="MenuMealTimeFoodXRefID" Nullable="false" />
+          <Property Type="Int32" Name="UserProgramXRefID" Nullable="false" />
+          <Property Type="Int32" Name="MenuMealTimeOrderID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="spUserMenuCalories_Result">
+          <Property Type="Decimal" Name="Calories" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="spSelectFoodBySponsorAndMealTimeType_Result">
+          <Property Type="Int32" Name="FoodID" Nullable="false" />
+          <Property Type="Int32" Name="MealTimeTypeID" Nullable="false" />
+          <Property Type="String" Name="MealTimeName" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="UserID" Nullable="true" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="ShortName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="SearchableName" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="SearchableNameLength" Nullable="true" />
+          <Property Type="Decimal" Name="Carbohydrate" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Protein" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Fat" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Calories" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Qty" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="UnitID" Nullable="true" />
+          <Property Type="String" Name="UnitName" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="SponsorID" Nullable="true" />
+          <Property Type="String" Name="SponsorName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="SponsorDescription" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="TAG" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="SourceID" Nullable="true" />
+          <Property Type="String" Name="SourceName" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="spUserProgramDayMealTimeFoodXRefUpdate_Result">
+          <Property Type="Int32" Name="RowCount" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NutritionModelStoreContainer" CdmEntityContainer="NutritionEntities" >
+          <FunctionImportMapping FunctionImportName="spSelectFoodByID" FunctionName="NutritionModel.Store.spSelectFoodByID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NutritionModel.spSelectFoodByID_Result">
+                <ScalarProperty Name="FoodID" ColumnName="FoodID" />
+                <ScalarProperty Name="MealTimeTypeID" ColumnName="MealTimeTypeID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="SearchableName" ColumnName="SearchableName" />
+                <ScalarProperty Name="SearchableNameLength" ColumnName="SearchableNameLength" />
+                <ScalarProperty Name="Carbohydrate" ColumnName="Carbohydrate" />
+                <ScalarProperty Name="Protein" ColumnName="Protein" />
+                <ScalarProperty Name="Fat" ColumnName="Fat" />
+                <ScalarProperty Name="Calories" ColumnName="Calories" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+                <ScalarProperty Name="SponsorID" ColumnName="SponsorID" />
+                <ScalarProperty Name="TAG" ColumnName="TAG" />
+                <ScalarProperty Name="SourceID" ColumnName="SourceID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spUserDailyMenuInitialize" FunctionName="NutritionModel.Store.spUserDailyMenuInitialize" />
+          <FunctionImportMapping FunctionImportName="spUserDailyMenuSelectByDay" FunctionName="NutritionModel.Store.spUserDailyMenuSelectByDay">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NutritionModel.spUserDailyMenuSelectByDay_Result">
+                <ScalarProperty Name="MealTimeTypeID" ColumnName="MealTimeTypeID" />
+                <ScalarProperty Name="MealTimeName" ColumnName="MealTimeName" />
+                <ScalarProperty Name="FoodName" ColumnName="FoodName" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="Calories" ColumnName="Calories" />
+                <ScalarProperty Name="MenuMealTimeFoodXRefID" ColumnName="MenuMealTimeFoodXRefID" />
+                <ScalarProperty Name="UserProgramXRefID" ColumnName="UserProgramXRefID" />
+                <ScalarProperty Name="MenuMealTimeOrderID" ColumnName="MenuMealTimeOrderID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spUserMenuCalories" FunctionName="NutritionModel.Store.spUserMenuCalories" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NutritionModel.spUserMenuCalories_Result">
+                <ScalarProperty Name="Calories" ColumnName="Calories" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spSelectFoodBySponsorAndMealTimeType" FunctionName="NutritionModel.Store.spSelectFoodBySponsorAndMealTimeType">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NutritionModel.spSelectFoodBySponsorAndMealTimeType_Result">
+                <ScalarProperty Name="FoodID" ColumnName="FoodID" />
+                <ScalarProperty Name="MealTimeTypeID" ColumnName="MealTimeTypeID" />
+                <ScalarProperty Name="MealTimeName" ColumnName="MealTimeName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="SearchableName" ColumnName="SearchableName" />
+                <ScalarProperty Name="SearchableNameLength" ColumnName="SearchableNameLength" />
+                <ScalarProperty Name="Carbohydrate" ColumnName="Carbohydrate" />
+                <ScalarProperty Name="Protein" ColumnName="Protein" />
+                <ScalarProperty Name="Fat" ColumnName="Fat" />
+                <ScalarProperty Name="Calories" ColumnName="Calories" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+                <ScalarProperty Name="SponsorID" ColumnName="SponsorID" />
+                <ScalarProperty Name="SponsorName" ColumnName="SponsorName" />
+                <ScalarProperty Name="SponsorDescription" ColumnName="SponsorDescription" />
+                <ScalarProperty Name="TAG" ColumnName="TAG" />
+                <ScalarProperty Name="SourceID" ColumnName="SourceID" />
+                <ScalarProperty Name="SourceName" ColumnName="SourceName" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spUserProgramDayMealTimeFoodXRefUpdate" FunctionName="NutritionModel.Store.spUserProgramDayMealTimeFoodXRefUpdate" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NutritionModel.spUserProgramDayMealTimeFoodXRefUpdate_Result">
+                <ScalarProperty Name="RowCount" ColumnName="RowCount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6B066262-6AA1-4B10-B2EF-DA791B40B414}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Selery.Model</RootNamespace>
+    <AssemblyName>Selery.Model</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="B2B.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>B2B.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="B2B.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>B2B.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Nutrition.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Nutrition.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Nutrition.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Nutrition.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Registration.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Registration.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Registration.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Registration.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Workout.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Workout.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Workout.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Workout.edmx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Registration.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Registration.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="Nutrition.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Nutrition.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="B2B.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>B2B.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="B2B.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>B2B.edmx</DependentUpon>
+      <LastGenOutput>B2B.Context.cs</LastGenOutput>
+    </None>
+    <None Include="B2B.edmx.diagram">
+      <DependentUpon>B2B.edmx</DependentUpon>
+    </None>
+    <None Include="Nutrition.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Nutrition.edmx</DependentUpon>
+      <LastGenOutput>Nutrition.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Nutrition.edmx.diagram">
+      <DependentUpon>Nutrition.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Registration.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Registration.edmx</DependentUpon>
+      <LastGenOutput>Registration.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Registration.edmx.diagram">
+      <DependentUpon>Registration.edmx</DependentUpon>
+    </None>
+    <EntityDeploy Include="Workout.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Workout.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Workout.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Workout.edmx</DependentUpon>
+      <LastGenOutput>Workout.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Workout.edmx.diagram">
+      <DependentUpon>Workout.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Selery.Model.Entity.B2B\Selery.Model.Entity.B2B.csproj">
+      <Project>{2f3a4978-6b42-4a51-ba31-e5f3c70fbee5}</Project>
+      <Name>Selery.Model.Entity.B2B</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Selery.Model.Entity.Nutrition\Selery.Model.Entity.Nutrition.csproj">
+      <Project>{a2589188-da2c-4693-a415-6f1d7712a12e}</Project>
+      <Name>Selery.Model.Entity.Nutrition</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Selery.Model.Entity.Registration\Selery.Model.Entity.Registration.csproj">
+      <Project>{c32902fb-72ee-462f-915f-17d14b56caaa}</Project>
+      <Name>Selery.Model.Entity.Registration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Selery.Model.Entity.Workout\Selery.Model.Entity.Workout.csproj">
+      <Project>{62006634-09a7-4fb5-9013-0517773be694}</Project>
+      <Name>Selery.Model.Entity.Workout</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
