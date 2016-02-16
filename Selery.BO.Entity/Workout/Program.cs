@@ -22,5 +22,6 @@ namespace Selery.BO.Entity.Workout
         public int UnitOfMeasureID { get; set; }
         public string UnitOfMeasureCode { get; set; }
         public string UnitOfMeasureDescription { get; set; }
+        public int UsersInProgram { get; set; }
     }
 }

@@ -183,6 +183,7 @@ namespace Selery.Web.Api.Models.Workout.Repository
                 program.UnitOfMeasureID = item.UnitOfMeasureID.HasValue ? item.UnitOfMeasureID.Value : 0;
                 program.UnitOfMeasureCode = item.UnitOfMeasureCode;
                 program.UnitOfMeasureDescription = item.UnitOfMeasureDescription;
+                program.UsersInProgram = item.UsersInProgram.Value;
                 programs.Add(program);
             }
 
