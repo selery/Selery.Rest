@@ -54,9 +54,9 @@ namespace Selery.Web.Api.Controllers.Workout
         }
 
         [HttpPost, ActionName("userprograminsert")]
-        public UserProgram UserProgramInsert(int userID, [FromBody]  int programID)
+        public UserProgram UserProgramInsert(int userID, [FromBody]  Program program)
         {
-            return repository.UserProgramInsert(userID, programID);
+            return repository.UserProgramInsert(userID, program.ProgramID);
         }
 
         [HttpPatch, ActionName("updateuserprogramday")]
