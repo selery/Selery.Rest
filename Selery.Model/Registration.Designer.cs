@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\htorres\Documents\Projects\Selery\Selery.Model\Registration.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\htorres\Source\Repos\Selery.Rest\Selery.Model\Registration.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

@@ -104,7 +104,7 @@ namespace Selery.Web.Api.Models.Registration.Repository
                     user.LastName = userEF.LastName;
                     user.LastUpdatedBy = userEF.LastUpdatedBy.HasValue ? userEF.LastUpdatedBy.Value : 0;
                     user.LastUpdatedDate = userEF.LastUpdatedDate.HasValue ? userEF.LastUpdatedDate.Value : DateTime.MinValue;
-                    user.Password = userEF.Password;
+                    user.Password = null;
                     user.TerminationDate = userEF.TerminationDate.HasValue ? userEF.TerminationDate.Value : DateTime.MinValue;
                     user.UserID = userEF.UserID;
                     user.CurrentProgram = _workoutRepository.SelectCurrentUserProgram(user.UserID);
@@ -157,7 +157,7 @@ namespace Selery.Web.Api.Models.Registration.Repository
                     user.LastName = userEF.LastName;
                     user.LastUpdatedBy = userEF.LastUpdatedBy.HasValue ? userEF.LastUpdatedBy.Value : 0;
                     user.LastUpdatedDate = userEF.LastUpdatedDate.HasValue ? userEF.LastUpdatedDate.Value : DateTime.MinValue;
-                    user.Password = userEF.Password;
+                    user.Password = null;
                     user.TerminationDate = userEF.TerminationDate.HasValue ? userEF.TerminationDate.Value : DateTime.MinValue;
                     user.UserID = userEF.UserID;
                     user.CurrentProgram = _workoutRepository.SelectCurrentUserProgram(user.UserID);
@@ -213,7 +213,7 @@ namespace Selery.Web.Api.Models.Registration.Repository
                     user.LastName = userEF.LastName;
                     user.LastUpdatedBy = userEF.LastUpdatedBy.HasValue ? userEF.LastUpdatedBy.Value : 0;
                     user.LastUpdatedDate = userEF.LastUpdatedDate.HasValue ? userEF.LastUpdatedDate.Value : DateTime.MinValue;
-                    user.Password = userEF.Password;
+                    user.Password = null;
                     user.TerminationDate = userEF.TerminationDate.HasValue ? userEF.TerminationDate.Value : DateTime.MinValue;
                     user.UserID = userEF.UserID;
                     user.CurrentProgram = _workoutRepository.SelectCurrentUserProgram(user.UserID);

@@ -229,5 +229,10 @@ namespace Selery.Model
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("spUserProfileUpdate", userIDParameter, weightParameter, activityIDParameter);
         }
+    
+        public virtual ObjectResult<spUserSelectAll_Result> spUserSelectAll()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spUserSelectAll_Result>("spUserSelectAll");
+        }
     }
 }

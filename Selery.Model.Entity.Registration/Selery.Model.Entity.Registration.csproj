@@ -85,6 +85,9 @@
     <Compile Include="spSelectUserByID_Result.cs">
       <DependentUpon>Registration.tt</DependentUpon>
     </Compile>
+    <Compile Include="spUserSelectAll_Result.cs">
+      <DependentUpon>Registration.tt</DependentUpon>
+    </Compile>
     <Compile Include="spUserWeightInsert_Result.cs">
       <DependentUpon>Registration.tt</DependentUpon>
     </Compile>
