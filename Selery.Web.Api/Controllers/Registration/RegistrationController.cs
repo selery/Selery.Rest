@@ -15,25 +15,76 @@ namespace Selery.Web.Api.Controllers.Registration
     {
         private readonly IRegistration repository;
 
+        #region Gets
         public RegistrationController(IRegistration repository)
         {
             this.repository = repository;
         }
 
-        [HttpPost, ActionName("adduser")]
-        public HttpResponseMessage CreateUser(User user)
-        {              
-            User newUser = repository.CreateUser(user);
-            var response = Request.CreateResponse<User>(HttpStatusCode.Created, newUser);
-            response.Headers.Location = new Uri(Request.RequestUri, string.Format("/api/registration/getuserbyid/{0}", newUser.UserID.ToString()));
-            return response;  
+        public User Get(int id)
+        {
+            User user = repository.SelectUserByID(id);
+            if (user == null)
+            {
+                throw new HttpResponseException(new HttpResponseMessage(HttpStatusCode.NotFound));
+            }
+
+            return user;
         }
 
-        [HttpPost, ActionName("loginbyemail")]
-        public User LoginByEmail(string email, [FromBody]  byte[] password)
-        {            
-            return repository.LoginByEmail(email, password);
+        public User GetUserByEmail(string email)
+        {
+            User user = repository.SelectUserByEmail(email);
+            if (user == null)
+            {
+                throw new HttpResponseException(new HttpResponseMessage(HttpStatusCode.NotFound));
+            }
+
+            return user;
+
         }
+
+        public User GetUserByFacebookID(long facebookID)
+        {
+            User user = repository.SelectUserByFacebookID(facebookID);
+            if (user == null)
+            {
+                throw new HttpResponseException(new HttpResponseMessage(HttpStatusCode.NotFound));
+            }
+
+            return user;
+
+        }
+        
+        public IEnumerable<User> Get([FromUri]User user)
+        {
+            return null;
+        }
+
+       
+        #endregion
+
+        #region Posts
+        public HttpResponseMessage Post(User user)
+        {
+            User newUser = repository.CreateUser(user);
+            var response = Request.CreateResponse<User>(HttpStatusCode.Created, newUser);
+            response.Headers.Location = new Uri(Request.RequestUri, string.Format("/api/registration/{0}", newUser.UserID.ToString()));
+            return response;
+        }
+
+        [HttpPost, ActionName("login")]
+        public HttpResponseMessage PostLogin(Credentials credentials)
+        {
+            User result = repository.LoginByEmail(credentials.Email, credentials.Password);
+            if (result == null)
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+
+            return Request.CreateResponse<User>(HttpStatusCode.OK, result);
+        }
+
+        #endregion
+        /*       
 
         [HttpPatch, ActionName("updateregistration")]
         public User UpdateUserRegistration([FromBody] User user)
@@ -48,59 +99,7 @@ namespace Selery.Web.Api.Controllers.Registration
 
             return repository.UpdateUserProfile(user);
         }
-
-        [HttpGet, ActionName("finduserbyemail")]
-        public int FindUserByEmail(string email)
-        {
-            return repository.FindUserByEmail(email);
-
-        }
-
-        [HttpGet, ActionName("finduserbyfacebookid")]
-        public int FindUserByFacebookID(long facebookID)
-        {
-            return repository.FindUserByFacebookID(facebookID);
-
-        }
-
-        [HttpGet, ActionName("getuserbyemail")]
-        public User SelectUserByEmail(string email)
-        {
-            User user = repository.SelectUserByEmail(email);
-            if (user == null)
-            {
-                throw new HttpResponseException(new HttpResponseMessage(HttpStatusCode.NotFound));
-            }
-
-            return user;
-         
-        }
-
-        [HttpGet, ActionName("getuserbyid")]
-        public User SelectUserByID(int id)
-        {
-            User user= repository.SelectUserByID(id);
-            if (user == null)
-            {
-                throw new HttpResponseException(new HttpResponseMessage(HttpStatusCode.NotFound));        
-            }
-
-            return user;
-        }
-
-        [HttpGet, ActionName("getuserbyfacebookid")]
-        public User SelectUserByFacebookID(long facebookID)
-        {
-            User user = repository.SelectUserByFacebookID(facebookID);
-            if (user == null)
-            {
-                throw new HttpResponseException(new HttpResponseMessage(HttpStatusCode.NotFound));
-            }
-
-            return user;
-
-        }
-
+        
         [HttpGet, ActionName("selectactivity")]
         public IEnumerable<Activity> SelectActivity()
         {
@@ -118,5 +117,6 @@ namespace Selery.Web.Api.Controllers.Registration
         {
             return repository.UserWeightInsert(userID, weight);
         }
+         **/
     }
 }

@@ -7,25 +7,45 @@ namespace Selery.Web.Api
 {
     public static class WebApiConfig
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="config"></param>
+        /// <remarks>
+        /// http://stackoverflow.com/questions/11407267/multiple-httppost-method-in-web-api-controller
+        /// </remarks>
         public static void Register(HttpConfiguration config)
         {
-            //config.Routes.MapHttpRoute(
-            //    name: "DefaultApi",
-            //    routeTemplate: "api/{controller}/{id}",
-            //    defaults: new { id = RouteParameter.Optional }
-            //);
 
-            config.Routes.MapHttpRoute(
-               name: "RpcApi",
-               routeTemplate: "api/{controller}/{action}/{id}",
-               defaults: new { id = RouteParameter.Optional }
-           );
 
+            // Controller Only
+            // To handle routes like `/api/VTRouting`
             config.Routes.MapHttpRoute(
-               name: "DefaultApi",
-               routeTemplate: "api/{controller}/{id}",
-               defaults: new { id = RouteParameter.Optional }
-           );
+                name: "ControllerOnly",
+                routeTemplate: "api/{controller}"
+            );
+
+            // Controller with ID
+            // To handle routes like `/api/VTRouting/1`
+            config.Routes.MapHttpRoute(
+                name: "ControllerAndId",
+                routeTemplate: "api/{controller}/{id}",
+                defaults: null,
+                constraints: new { id = @"^\d+$" } // Only integers 
+            );
+
+            // Controllers with Actions
+            // To handle routes like `/api/VTRouting/route`
+            config.Routes.MapHttpRoute(
+                name: "ControllerAndAction",
+                routeTemplate: "api/{controller}/{action}"
+            );
+
+
+
+            
+
+
 
             // Uncomment the following line of code to enable query support for actions with an IQueryable or IQueryable<T> return type.
             // To avoid processing unexpected or malicious queries, use the validation settings on QueryableAttribute to validate incoming queries.

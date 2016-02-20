@@ -314,6 +314,14 @@ namespace Selery.Web.Api.Models.Registration.Repository
             }
         }
 
+        /// <summary>
+        /// Valida credenciales del usuario
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="password"></param>
+        /// <returns>
+        /// regressa un usuario valido si el login es exitoso de lo contrato regresa null        
+        /// </returns>
         public User LoginByEmail(string email,byte[] password)
         {
             int? userID=0;
@@ -328,8 +336,7 @@ namespace Selery.Web.Api.Models.Registration.Repository
             {
                 retUser = this.SelectUserByID(userID.Value);
             }
-
-            return retUser;
+            return retUser;          
         }
 
         public IEnumerable<Activity> SelectActivity()
