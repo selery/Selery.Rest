@@ -65,6 +65,8 @@ namespace Selery.Web.Api.Controllers.Registration
         #endregion
 
         #region Posts
+
+        [HttpPost, ActionName("new")]
         public HttpResponseMessage Post(User user)
         {
             User newUser = repository.CreateUser(user);

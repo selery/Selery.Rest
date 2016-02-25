@@ -21,39 +21,62 @@ namespace Selery.Web.Api.Controllers.Workout
             this.repository = repository;
         }
 
-        [HttpGet, ActionName("getprogram")]
-        public Program SelectProgram(int programID)
+       
+        //rturns a workout program
+        public Program Get(int id)
         {
-            return repository.SelectProgram(programID);
+
+            Program program = repository.SelectProgram(id);
+            if (program == null)
+            {
+                throw new HttpResponseException(new HttpResponseMessage(HttpStatusCode.NotFound));
+            }
+
+            return program;           
 
         }
-
-        [HttpGet, ActionName("getcurrentuserprogram")]
-        public UserProgram SelectCurrentUserProgram(int userID)
-        {
-            return repository.SelectCurrentUserProgram(userID);
-
-        }
-
-        [HttpGet, ActionName("getactiveprograms")]
-        public IEnumerable<Program> SelectActivePrograms()
+                
+        //all active workout programs
+        public IEnumerable<Program> Get()
         {
             return repository.SelectActivePrograms();
         }
 
-        [HttpGet, ActionName("getavailableprograms")]
-        public IEnumerable<Program> UserAvailableProgramsSelect(int userID)
+        /// <summary>
+        /// returns all a vailable programs for user
+        /// </summary>
+        /// <param name="userID"></param>
+        /// <returns></returns>
+        [HttpGet, ActionName("availableprograms")]
+        public IEnumerable<Program> GetAvailablePrograms(int userID)
         {
-            return repository.UserAvailableProgramsSelect(userID);
+            return  repository.UserAvailableProgramsSelect(userID);
+            
         }
 
-        [HttpGet, ActionName("getusersinprogram")]
+        /// <summary>
+        /// Return current user program in progress
+        /// </summary>
+        /// <param name="userID"></param>
+        /// <returns></returns>
+        [HttpGet, ActionName("currentprogram")]
+        public UserProgram GetCurrentUserProgram(int userID)
+        {
+            UserProgram program = repository.SelectCurrentUserProgram(userID);
+            if(program==null)
+                throw new HttpResponseException(new HttpResponseMessage(HttpStatusCode.NotFound));
+
+            return program;
+
+        }
+        
+        [HttpGet, ActionName("usersinprogram")]
         public int UsersInProgram(int programID)
         {
             return repository.UsersInProgram(programID);
         }
 
-        [HttpPost, ActionName("userprograminsert")]
+        [HttpPost, ActionName("setprogram")]
         public UserProgram UserProgramInsert(int userID, [FromBody]  Program program)
         {
             return repository.UserProgramInsert(userID, program.ProgramID);

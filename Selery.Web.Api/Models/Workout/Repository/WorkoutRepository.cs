@@ -25,6 +25,7 @@ namespace Selery.Web.Api.Models.Workout.Repository
                 spSelectProgramByID_Result programEF = context.spSelectProgramByID(programID).FirstOrDefault();
                 if (programEF != null)
                 {
+                    program = new Program();
                     program.ProgramID = programEF.ProgramID;
                     program.Name = programEF.Name;
                     program.Description = programEF.Description;
