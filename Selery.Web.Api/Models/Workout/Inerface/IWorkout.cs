@@ -13,7 +13,7 @@ namespace Selery.Web.Api.Models.Workout.Interface
     {
         UserProgram SelectCurrentUserProgram(int UserID);
         IEnumerable<Program> SelectActivePrograms();
-        IEnumerable<Program> UserAvailableProgramsSelect(int UserID);
+        IEnumerable<AvailableProgram> UserAvailableProgramsSelect(int UserID);
         Program SelectProgram(int programID);
         int UsersInProgram(int programID);
         UserProgram UserProgramInsert(int userID, int programID);

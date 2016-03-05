@@ -186,6 +186,7 @@
           <Property Type="String" Name="UnitOfMeasureCode" Nullable="true" MaxLength="4" />
           <Property Type="String" Name="UnitOfMeasureDescription" Nullable="true" MaxLength="50" />
           <Property Type="Int32" Name="UsersInProgram" Nullable="true" />
+          <Property Type="Boolean" Name="IsCurrent" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -323,6 +324,7 @@
                 <ScalarProperty Name="UnitOfMeasureCode" ColumnName="UnitOfMeasureCode" />
                 <ScalarProperty Name="UnitOfMeasureDescription" ColumnName="UnitOfMeasureDescription" />
                 <ScalarProperty Name="UsersInProgram" ColumnName="UsersInProgram" />
+                <ScalarProperty Name="IsCurrent" ColumnName="IsCurrent" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

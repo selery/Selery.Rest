@@ -48,7 +48,7 @@ namespace Selery.Web.Api.Controllers.Workout
         /// <param name="userID"></param>
         /// <returns></returns>
         [HttpGet, ActionName("availableprograms")]
-        public IEnumerable<Program> GetAvailablePrograms(int userID)
+        public IEnumerable<AvailableProgram> GetAvailablePrograms(int userID)
         {
             return  repository.UserAvailableProgramsSelect(userID);
             

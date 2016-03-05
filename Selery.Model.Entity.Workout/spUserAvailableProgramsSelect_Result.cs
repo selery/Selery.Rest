@@ -28,5 +28,6 @@ namespace Selery.Model.Entity.Workout
         public string UnitOfMeasureCode { get; set; }
         public string UnitOfMeasureDescription { get; set; }
         public Nullable<int> UsersInProgram { get; set; }
+        public Nullable<bool> IsCurrent { get; set; }
     }
 }

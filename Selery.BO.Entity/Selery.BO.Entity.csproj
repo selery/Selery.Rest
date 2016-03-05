@@ -45,6 +45,7 @@
     <Compile Include="Registration\Credentials.cs" />
     <Compile Include="Registration\User.cs" />
     <Compile Include="Registration\Goal.cs" />
+    <Compile Include="Workout\AvailableProgram.cs" />
     <Compile Include="Workout\Program.cs" />
     <Compile Include="Workout\UserProgram.cs" />
   </ItemGroup>

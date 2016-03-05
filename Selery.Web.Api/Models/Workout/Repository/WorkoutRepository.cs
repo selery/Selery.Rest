@@ -157,9 +157,9 @@ namespace Selery.Web.Api.Models.Workout.Repository
             return listPrograms;
         }
 
-        public IEnumerable<Program> UserAvailableProgramsSelect(int UserID)
+        public IEnumerable<AvailableProgram> UserAvailableProgramsSelect(int UserID)
         {
-            List<Program> programs = new List<Program>();
+            List<AvailableProgram> programs = new List<AvailableProgram>();
             IEnumerable<spUserAvailableProgramsSelect_Result> listEF;
 
             using (var context = new WorkoutEntities())
@@ -169,7 +169,7 @@ namespace Selery.Web.Api.Models.Workout.Repository
 
             foreach (spUserAvailableProgramsSelect_Result item in listEF)
             {
-                Program program = new Program();
+                AvailableProgram program = new AvailableProgram();
                 program.GoalID = item.GoalID;
                 program.GoalName = item.GoalName;
                 program.Name = item.Name;
@@ -185,6 +185,7 @@ namespace Selery.Web.Api.Models.Workout.Repository
                 program.UnitOfMeasureCode = item.UnitOfMeasureCode;
                 program.UnitOfMeasureDescription = item.UnitOfMeasureDescription;
                 program.UsersInProgram = item.UsersInProgram.Value;
+                program.IsCurrent = item.IsCurrent;
                 programs.Add(program);
             }
 
