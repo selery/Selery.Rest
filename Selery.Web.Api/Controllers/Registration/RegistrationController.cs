@@ -61,7 +61,12 @@ namespace Selery.Web.Api.Controllers.Registration
             return null;
         }
 
-       
+
+        public IEnumerable<Activity> GetActivity()
+        {
+            return repository.SelectActivity();
+        }
+
         #endregion
 
         #region Posts
@@ -102,11 +107,7 @@ namespace Selery.Web.Api.Controllers.Registration
             return repository.UpdateUserProfile(user);
         }
         
-        [HttpGet, ActionName("selectactivity")]
-        public IEnumerable<Activity> SelectActivity()
-        {
-            return repository.SelectActivity();
-        }
+        
 
         [HttpGet, ActionName("selectgoal")]
         public IEnumerable<Goal> SelectGoal()
