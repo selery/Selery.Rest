@@ -21,6 +21,14 @@ namespace Selery.Web.Api.Controllers.Registration
             this.repository = repository;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <remarks>
+        /// http://server/selery/api/registration/id
+        /// </remarks>
         public User Get(int id)
         {
             User user = repository.SelectUserByID(id);
@@ -32,6 +40,14 @@ namespace Selery.Web.Api.Controllers.Registration
             return user;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        /// <remarks>
+        /// http://server/Selery/api/registration/getuserbyemail/?email=email
+        /// </remarks>
         public User GetUserByEmail(string email)
         {
             User user = repository.SelectUserByEmail(email);
