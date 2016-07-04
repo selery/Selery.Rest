@@ -87,7 +87,7 @@ namespace Selery.Web.Api.Models.Registration.Repository
                     user = new User();
                     user.ActivationDate = userEF.ActivationDate.HasValue ? userEF.ActivationDate.Value : DateTime.MinValue;
                     user.ActivityID = userEF.ActivityID.HasValue ? userEF.ActivityID.Value : 0;
-                    user.BirthDate = userEF.BirthDate.HasValue ? userEF.BirthDate.Value : DateTime.MinValue;
+                    user.BirthDate = userEF.BirthDate.HasValue ? userEF.BirthDate.Value : (DateTime?)null;
                     user.CreatedDate = userEF.CreatedDate;
                     user.CreatedBy = userEF.CreatedBy.HasValue ? userEF.CreatedBy.Value : 0;
                     user.Description = userEF.Description;
@@ -140,7 +140,7 @@ namespace Selery.Web.Api.Models.Registration.Repository
                     user = new User();
                     user.ActivationDate = userEF.ActivationDate.HasValue ? userEF.ActivationDate.Value : DateTime.MinValue;
                     user.ActivityID = userEF.ActivityID.HasValue ? userEF.ActivityID.Value : 0;
-                    user.BirthDate = userEF.BirthDate.HasValue ? userEF.BirthDate.Value : DateTime.MinValue;
+                    user.BirthDate = userEF.BirthDate.HasValue ? userEF.BirthDate.Value : (DateTime?)null;
                     user.CreatedDate = userEF.CreatedDate;
                     user.CreatedBy = userEF.CreatedBy.HasValue ? userEF.CreatedBy.Value : 0;
                     user.Description = userEF.Description;
@@ -196,7 +196,7 @@ namespace Selery.Web.Api.Models.Registration.Repository
                     user = new User();
                     user.ActivationDate = userEF.ActivationDate.HasValue ? userEF.ActivationDate.Value : DateTime.MinValue;
                     user.ActivityID = userEF.ActivityID.HasValue ? userEF.ActivityID.Value : 0;
-                    user.BirthDate = userEF.BirthDate.HasValue ? userEF.BirthDate.Value : DateTime.MinValue;
+                    user.BirthDate = userEF.BirthDate.HasValue ? userEF.BirthDate.Value : (DateTime?)null;
                     user.CreatedDate = userEF.CreatedDate;
                     user.CreatedBy = userEF.CreatedBy.HasValue ? userEF.CreatedBy.Value : 0;
                     user.Description = userEF.Description;
@@ -257,7 +257,7 @@ namespace Selery.Web.Api.Models.Registration.Repository
                                 
                 user.BMI = Selery.BO.Nutrition.Profile.GetBMI(heigh, user.Weight);
                 
-                int age = Selery.Library.Common.Helper.GetAge(user.BirthDate);
+                int age = Selery.Library.Common.Helper.GetAge(user.BirthDate.Value);
                               
 
                 //selecctionar el goaltype en base al bmi

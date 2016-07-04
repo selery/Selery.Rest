@@ -21,7 +21,7 @@ namespace Selery.BO.Entity.Registration
         /// 1 Hombre 2 Mujer
         /// </summary>
         public int Gender { get; set; }
-        public DateTime BirthDate { get; set; }
+        public DateTime? BirthDate { get; set; }
         public Decimal Heigh { get; set; }
         public int HeighInt { get; set; }
         public int HeighDec { get; set; }

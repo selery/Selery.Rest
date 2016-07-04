@@ -33,7 +33,7 @@ namespace Selery.Web.Api.Models.Nutrition.Repository
 
             decimal calories = 0;
             decimal heightCentimeters = UnitConverter.MetersToCentimeters(user.HeighInt) + user.HeighDec;//estatura en centimetros
-            int age = Selery.Library.Common.Helper.GetAge(user.BirthDate);
+            int age = Selery.Library.Common.Helper.GetAge(user.BirthDate.Value);
             spSelectActivityByID_Result activity = null;
             using (var context = new RegistrationEntities())
             {

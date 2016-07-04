@@ -27,7 +27,6 @@ namespace Selery.Web.Api.Controllers.Nutrition
         [HttpPost, ActionName("usercalories")]
         public decimal GetUserCalories([FromBody] User user)
         {
-
             return repository.GetUserCalories(user);
         }
 
